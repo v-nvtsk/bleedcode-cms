@@ -1,0 +1,56 @@
+:root {
+  --header-height: 60px;
+  --footer-height: 60px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+:host {
+  width: 100%;
+  min-height: 100vh;
+
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-app {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* grid-template-columns: 300px auto;
+  grid-template-areas:
+    "s h"
+    "s m"
+    "s f"; */
+}
+
+
+header.main-header {
+  min-height: var(--header-height);
+  grid-area: h;
+}
+
+main.main {
+  flex: 1;
+  grid-area: m;
+}
+
+footer.main-footer {
+  min-height: var(--footer-height);
+  grid-area: f;
+}
+
+aside.sidebar {
+  grid-area: s;
+}

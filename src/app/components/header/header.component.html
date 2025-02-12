@@ -1,0 +1,30 @@
+<header class="main-header bg-light container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container p-0">
+      <a class="navbar-brand" routerLink="/">BleedCode CMS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div *ngIf="(isAuthenticated$ | async)===true" class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/">Главная</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/tasks">Задачи</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/users">Пользователи</a>
+          </li>
+        </ul>
+
+      </div>
+      <div class="ms-5">
+        <a *ngIf="(isAuthenticated$ | async)===false" [routerLink]="[ '/auth' ]">Войти</a>
+        <button *ngIf="(isAuthenticated$ | async)===true" (click)="logout()"
+          class="btn btn-outline-danger">Выйти</button>
+      </div>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,17 @@
+.auth-container {
+  max-width: 400px;
+  width: 100%;
+  border: 1px solid #dee2e6;
+}
+
+.error-message {
+  min-height: 24px;
+}
+
+.error-message span {
+  opacity: 1;
+}
+
+.error-message span.hidden {
+  opacity: 0;
+}

@@ -1,0 +1,25 @@
+.dashboard-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  margin-bottom: 20px;
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+mat-card {
+  margin-bottom: 0;
+}
+
+.dashboard-description {
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  color: #555;
+}

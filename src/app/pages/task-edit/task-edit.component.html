@@ -1,0 +1,50 @@
+<div class="container">
+  <form class="d-flex flex-column" [formGroup]="editedTaskForm" *ngIf="editedTaskForm; else loading">
+    <mat-form-field>
+      <mat-label>Название:</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Описание:</mat-label>
+      <textarea matInput rows="5" formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Примеры входных и выходных данных:</mat-label>
+      <textarea matInput rows="5" formControlName="examples"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Категория:</mat-label>
+      <!-- TODO: Исправить на Select -->
+      <input matInput formControlName="category" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Сложность:</mat-label>
+      <!-- TODO: Исправить на Select -->
+      <input matInput formControlName="difficulty" />
+    </mat-form-field>
+
+    <tags [tags]="(task$ | async)?.tags || []"
+      [selectedTags]="editedTaskForm.get('tags')?.value ? editedTaskForm.get('tags')?.value.split(',') : []"
+      (tagsUpdated)="onTagsUpdated($event)" />
+
+    <mat-form-field>
+      <mat-label>Дополнительные материалы:</mat-label>
+      <textarea matInput rows="5" formControlName="additional_materials"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Исходный код:</mat-label>
+      <textarea matInput rows="10" formControlName="code"></textarea>
+    </mat-form-field>
+  </form>
+
+  <ng-template #loading>Загрузка задачи...</ng-template>
+
+  <button mat-stroked-button (click)="saveChanges()" [disabled]="!editedTaskForm">Сохранить</button>
+  <button mat-stroked-button (click)="cancelChanges()">Отменить</button>
+
+</div>

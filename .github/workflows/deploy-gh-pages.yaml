@@ -15,10 +15,6 @@ jobs:
           npm ci
 
       - name: Build prod
-        env:
-          VITE_BACKEND_HOST: ${{ secrets.VITE_BACKEND_HOST }}
-          VITE_BACKEND_PORT: ${{ secrets.VITE_BACKEND_PORT }}
-          VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
 
         run: |
           npm run build

@@ -1,0 +1,37 @@
+<div class="container p-1 p-sm-2">
+  <h1 class="mt-2">Управление задачами</h1>
+
+  <button class="btn btn-success mt-2" (click)="addNewTask()">Добавить задачу</button>
+  <table class="table mt-2">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Название</th>
+        <th scope="col">Категория</th>
+        <th scope="col">Описание</th>
+        <th scope="col">Сложность</th>
+        <th scope="col" width="20%">Тэги</th>
+        <th scope="col">Действия</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="tasks$ | async as tasks">
+      <tr *ngFor="let task of tasks">
+        <th scope=" row">{{ task.id }}</th>
+        <td>{{ task.title }}</td>
+        <td>{{task.category}}</td>
+        <td>{{task.difficulty}}</td>
+        <td>{{ task.description }}</td>
+        <td>
+          <mat-chip-set role="list">
+            <mat-chip *ngFor="let tag of task.tags" role="listitem">{{ tag }}</mat-chip>
+          </mat-chip-set>
+        </td>
+        <td class="d-flex gap-2">
+          <button class="btn btn-outline-primary" (click)="editTask(task.id)">Изменить</button>
+          <button class="btn btn-outline-danger" (click)="deleteTask(task.id)">Удалить</button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>

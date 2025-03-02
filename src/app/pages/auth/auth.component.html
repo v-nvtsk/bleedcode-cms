@@ -1,0 +1,26 @@
+<div class="auth-page d-flex justify-content-center align-items-center">
+  <mat-progress-spinner *ngIf="(isInitialized$ | async)===false" mode="indeterminate" />
+  <div *ngIf="(isInitialized$ | async) && (isAuthenticated$ | async)===false"
+    class="auth-container position-absolute top-50 translate-middle-y border rounded shadow p-4 bg-light">
+    <h1 class="text-center mb-4">Вход</h1>
+    <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+      <div class="error-message text-danger text-center mb-3">
+        <span *ngIf="errorMessage">{{ errorMessage }}</span>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="username" class="form-label">Имя пользователя</label>
+        <input id="username" formControlName="username" type="text" class="form-control"
+          placeholder="Введите имя пользователя" required />
+      </div>
+      <div class="form-group mb-4">
+        <label for="password" class="form-label">Пароль</label>
+        <input id="password" formControlName="password" type="password" class="form-control"
+          placeholder="Введите пароль" required />
+      </div>
+      <button type="submit" [disabled]="!form.valid" class="btn btn-primary w-100">
+        Вход
+      </button>
+    </form>
+  </div>
+</div>
